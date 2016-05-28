@@ -21,24 +21,24 @@ var CKBUILDER_CONFIG = {
     'node_modules',
     'package.json',
     'README.md',
-    'tests',
+    'tests'
   ],
   plugins: {
-    basicstyles: 1,
-    clipboard: 1,
-    enterkey: 1,
-    entities: 1,
-    floatingspace: 1,
-    format: 1,
-    indentlist: 1,
-    justify: 1,
-    list: 1,
-    magicline: 1,
-    toolbar: 1,
-    undo: 1,
-    wysiwygarea: 1,
+    'basicstyles': 1,
+    'clipboard': 1,
+    'enterkey': 1,
+    'entities': 1,
+    'floatingspace': 1,
+    'format': 1,
+    'indentlist': 1,
+    'justify': 1,
+    'list': 1,
+    'magicline': 1,
+    'toolbar': 1,
+    'undo': 1,
+    'wysiwygarea': 1
   },
   languages: {
-    n: 1,
-  },
+    'en': 1
+  }
 };
