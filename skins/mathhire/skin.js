@@ -6,5 +6,5 @@
 //
 // This is the only mandatory property to be defined in this file.
 CKEDITOR.skin.name = 'mathhire';
-CKEDITOR.skin.ua_editor = 'ie';
-CKEDITOR.skin.ua_dialog = 'ie';
+CKEDITOR.skin.ua_editor = '';
+CKEDITOR.skin.ua_dialog = '';
