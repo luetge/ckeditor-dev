@@ -36,6 +36,7 @@ var CKBUILDER_CONFIG = {
     'magicline': 1,
     'toolbar': 1,
     'undo': 1,
+    'sourcearea': 1,
     'wysiwygarea': 1
   },
   languages: {

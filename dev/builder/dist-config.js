@@ -9,6 +9,7 @@
     { name: 'links', groups: [ 'links', ], },
     { name: 'insert', groups: [ 'insert', ], },
     { name: 'styles', groups: [ 'styles', ], },
+    { name: 'document', groups: [ 'mode', 'document', 'doctools' ] },
     { name: 'colors', groups: [ 'colors', ], },
     { name: 'tools', groups: [ 'tools', ], },
     { name: 'others', groups: [ 'others', ], },
