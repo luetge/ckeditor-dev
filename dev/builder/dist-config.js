@@ -19,6 +19,7 @@
 
   config.allowedContent = 'em strong u del ul ol li i br b strike h1 h2 h3 div; a[!href]; p[align]{text-align};';
   config.skin = 'mathhire';
+  config.magicline_color = '#d9534f';
 
   config.removeButtons = 'Superscript,Subscript,Anchor,Cut,Copy,Paste';
   config.height = '325px';
