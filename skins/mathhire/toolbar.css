@@ -60,6 +60,11 @@ Special outer level classes used in this file:
 	float: right;
 }
 
+.cke_toolbar:last-child
+{
+	float: right;
+}
+
 /* The box that holds buttons. */
 .cke_toolgroup
 {
@@ -471,4 +476,9 @@ a.cke_toolbox_collapser
 /* fa-chain-broken */
 .cke_button__unlink_icon::before {
 	content: "\f127";
+}
+
+/* fa-code */
+.cke_button__source_icon::before {
+	content: "\f121";
 }
