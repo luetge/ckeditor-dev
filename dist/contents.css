@@ -6,22 +6,22 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 body
 {
 	/* Font */
-	font-family: sans-serif, Arial, Verdana, "Trebuchet MS";
-	font-size: 12px;
+	font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Tahoma, Geneva, Arial, sans-serif;
+	font-size: 15px;
 
 	/* Text color */
-	color: #333;
+	color: #292b2c;
 
 	/* Remove the background color to make it transparent */
 	background-color: #fff;
 
-	margin: 20px;
+	margin: 1.25rem;
 }
 
 .cke_editable
 {
-	font-size: 13px;
-	line-height: 1.6;
+	font-size: 15px;
+	line-height: 1.25;
 
 	/* Fix for missing scrollbars with RTL texts. (#10488) */
 	word-wrap: break-word;
@@ -30,7 +30,7 @@ body
 blockquote
 {
 	font-style: italic;
-	font-family: Georgia, Times, "Times New Roman", serif;
+	// font-family: Georgia, Times, "Times New Roman", serif;
 	padding: 2px 0;
 	border-style: solid;
 	border-color: #ccc;
@@ -53,7 +53,7 @@ blockquote
 
 a
 {
-	color: #0782C1;
+	color: #428bca;
 }
 
 ol,ul,dl
