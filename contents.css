@@ -21,7 +21,7 @@ body
 .cke_editable
 {
 	font-size: 15px;
-	line-height: 1.25;
+	line-height: 1.5;
 
 	/* Fix for missing scrollbars with RTL texts. (#10488) */
 	word-wrap: break-word;
@@ -30,7 +30,6 @@ body
 blockquote
 {
 	font-style: italic;
-	// font-family: Georgia, Times, "Times New Roman", serif;
 	padding: 2px 0;
 	border-style: solid;
 	border-color: #ccc;
@@ -132,4 +131,97 @@ a > img {
 	margin: 1px;
 	border: none;
 	outline: 1px solid #0782C1;
+}
+
+/**
+ * Source Sans Pro
+ */
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../../fonts/SourceSansProExtraLight.eot');
+    src: local('Source Sans Pro ExtraLight'), local('SourceSansPro-ExtraLight'), 
+         url('../../fonts/SourceSansProExtraLight.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/SourceSansProExtraLight.woff2') format('woff2'),
+         url('../../fonts/SourceSansProExtraLight.woff') format('woff'),
+         url('../../fonts/SourceSansProExtraLight.ttf') format('truetype'),
+         url('../../fonts/SourceSansProExtraLight.svg#source_sans_proextralight') format('svg');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 200;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../../fonts/SourceSansProExtraLightIt.eot');
+    src: local('Source Sans Pro ExtraLight Italic'), local('SourceSansPro-ExtraLightIt'), 
+         url('../../fonts/SourceSansProExtraLightIt.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/SourceSansProExtraLightIt.woff2') format('woff2'),
+         url('../../fonts/SourceSansProExtraLightIt.woff') format('woff'),
+         url('../../fonts/SourceSansProExtraLightIt.ttf') format('truetype'),
+         url('../../fonts/SourceSansProExtraLightIt.svg#source_sans_proXLtIt') format('svg');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../../fonts/SourceSansProRegular.eot');
+    src: local('Source Sans Pro'), local('SourceSansPro-Regular'), 
+         url('../../fonts/SourceSansProRegular.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/SourceSansProRegular.woff2') format('woff2'),
+         url('../../fonts/SourceSansProRegular.woff') format('woff'),
+         url('../../fonts/SourceSansProRegular.ttf') format('truetype'),
+         url('../../fonts/SourceSansProRegular.svg#source_sans_proregular') format('svg');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../../fonts/SourceSansProRegularIt.eot');
+    src: local('Source Sans Pro Italic'), local('SourceSansPro-It'), 
+         url('../../fonts/SourceSansProRegularIt.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/SourceSansProRegularIt.woff2') format('woff2'),
+         url('../../fonts/SourceSansProRegularIt.woff') format('woff'),
+         url('../../fonts/SourceSansProRegularIt.ttf') format('truetype'),
+         url('../../fonts/SourceSansProRegularIt.svg#source_sans_proitalic') format('svg');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../../fonts/SourceSansProBold.eot');
+    src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), 
+         url('../../fonts/SourceSansProBold.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/SourceSansProBold.woff2') format('woff2'),
+         url('../../fonts/SourceSansProBold.woff') format('woff'),
+         url('../../fonts/SourceSansProBold.ttf') format('truetype'),
+         url('../../fonts/SourceSansProBold.svg#source_sans_probold') format('svg');
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+    src: url('../../fonts/SourceSansProBoldIt.eot');
+    src: local('Source Sans Pro Bold Italic'), local('SourceSansPro-BoldIt'), 
+         url('../../fonts/SourceSansProBoldIt.eot?#iefix') format('embedded-opentype'),
+         url('../../fonts/SourceSansProBoldIt.woff2') format('woff2'),
+         url('../../fonts/SourceSansProBoldIt.woff') format('woff'),
+         url('../../fonts/SourceSansProBoldIt.ttf') format('truetype'),
+         url('../../fonts/SourceSansProBoldIt.svg#source_sans_probold_italic') format('svg');
 }
