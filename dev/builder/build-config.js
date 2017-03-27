@@ -4,8 +4,10 @@ var CKBUILDER_CONFIG = {
   ignore: [
     '.bender',
     'bender.js',
+    'bender.ci.js',
     'bender-err.log',
     'bender-out.log',
+    '.travis.yml',
     'dev',
     '.DS_Store',
     '.editorconfig',
@@ -43,4 +45,4 @@ var CKBUILDER_CONFIG = {
   languages: {
     'en': 1
   }
-};
+}
