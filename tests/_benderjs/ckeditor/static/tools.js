@@ -1,5 +1,5 @@
 /**
- * @license Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
@@ -240,8 +240,10 @@
 		 * @param {Boolean} [fixStyles] Pass inline styles through {@link CKEDITOR.tools#parseCssText}.
 		 * @param {Boolean} [fixNbsp] Encode `\u00a0`.
 		 * @param {Boolean} [noTempElements] Strip elements with `data-cke-temp` attributes (e.g. hidden selection container).
+		 * @param {CKEDITOR.htmlParser.filter[]} [customFilters] Array of filters that will be applied to parsed HTML.
+		 * This parameter was added in 4.7.0.
 		 */
-		compatHtml: function( html, noInterWS, sortAttributes, fixZWS, fixStyles, fixNbsp, noTempElements ) {
+		compatHtml: function( html, noInterWS, sortAttributes, fixZWS, fixStyles, fixNbsp, noTempElements, customFilters ) {
 			// Remove all indeterminate white spaces.
 			if ( noInterWS ) {
 				html = html.replace( /[\t\n\r ]+(?=<)/g, '' ).replace( />[\t\n\r ]+/g, '>' );
@@ -256,6 +258,12 @@
 
 			if ( sortAttributes ) {
 				writer.sortAttributes = true;
+			}
+
+			if ( customFilters ) {
+				CKEDITOR.tools.array.forEach( customFilters, function( filter ) {
+					fragment.filterChildren( filter );
+				} );
 			}
 
 			fragment.writeHtml( writer );
@@ -339,20 +347,32 @@
 			fn( input, output );
 		},
 
-		testExternalInputOutput: function( url, fn ) {
+		/**
+		 * Note that this function calls `wait()` method therefore stopping any further code execution.
+		 *
+		 * @param {String} url URL to be requested for data.
+		 * @param {Function} fn A function to be called once data is readen from `url`.
+		 */
+		testExternalInput: function( url, fn ) {
 			assert.isObject( CKEDITOR.ajax, 'Ajax plugin is required' );
 
 			CKEDITOR.ajax.load( url, function( data ) {
 				resume( function() {
-					assert.isNotNull( data, 'Error while loading external data' );
-
-					var source = data.split( '=>' );
-
-					fn( source[ 0 ], source[ 1 ] );
+					fn( data );
 				} );
 			} );
 
 			wait();
+		},
+
+		testExternalInputOutput: function( url, fn ) {
+			this.testExternalInput( url, function( data ) {
+				assert.isNotNull( data, 'Error while loading external data' );
+
+				var source = data.split( '=>' );
+
+				fn( source[ 0 ], source[ 1 ] );
+			} );
 		},
 
 		/**

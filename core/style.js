@@ -1,5 +1,5 @@
 ﻿/**
- * @license Copyright (c) 2003-2016, CKSource - Frederico Knabben. All rights reserved.
+ * @license Copyright (c) 2003-2017, CKSource - Frederico Knabben. All rights reserved.
  * For licensing, see LICENSE.md or http://ckeditor.com/license
  */
 
@@ -1058,27 +1058,31 @@ CKEDITOR.STYLE_OBJECT = 3;
 		range.enlarge( CKEDITOR.ENLARGE_INLINE, 1 );
 
 		var bookmark = range.createBookmark(),
-			startNode = bookmark.startNode;
+			startNode = bookmark.startNode,
+			alwaysRemoveElement = this._.definition.alwaysRemoveElement;
 
 		if ( range.collapsed ) {
 			var startPath = new CKEDITOR.dom.elementPath( startNode.getParent(), range.root ),
-				// The topmost element in elementspatch which we should jump out of.
+				// The topmost element in elements path which we should jump out of.
 				boundaryElement;
-
 
 			for ( var i = 0, element; i < startPath.elements.length && ( element = startPath.elements[ i ] ); i++ ) {
 				// 1. If it's collaped inside text nodes, try to remove the style from the whole element.
 				//
 				// 2. Otherwise if it's collapsed on element boundaries, moving the selection
 				//  outside the styles instead of removing the whole tag,
-				//  also make sure other inner styles were well preserverd.(#3309)
-				if ( element == startPath.block || element == startPath.blockLimit )
+				//  also make sure other inner styles were well preserved.(#3309)
+				//
+				// 3. Force removing the element even if it's an boundary element when alwaysRemoveElement is true.
+				// Without it, the links won't be unlinked if the cursor is placed right before/after it. (#13062)
+				if ( element == startPath.block || element == startPath.blockLimit ) {
 					break;
+				}
 
 				if ( this.checkElementRemovable( element ) ) {
 					var isStart;
 
-					if ( range.collapsed && ( range.checkBoundaryOfElement( element, CKEDITOR.END ) || ( isStart = range.checkBoundaryOfElement( element, CKEDITOR.START ) ) ) ) {
+					if ( !alwaysRemoveElement && range.collapsed && ( range.checkBoundaryOfElement( element, CKEDITOR.END ) || ( isStart = range.checkBoundaryOfElement( element, CKEDITOR.START ) ) ) ) {
 						boundaryElement = element;
 						boundaryElement.match = isStart ? 'start' : 'end';
 					} else {
@@ -1087,10 +1091,11 @@ CKEDITOR.STYLE_OBJECT = 3;
 						// no difference that they're separate entities in the DOM tree. So, merge
 						// them before removal.
 						element.mergeSiblings();
-						if ( element.is( this.element ) )
+						if ( element.is( this.element ) ) {
 							removeFromElement.call( this, element );
-						else
+						} else {
 							removeOverrides( element, getOverrides( this )[ element.getName() ] );
+						}
 					}
 				}
 			}
@@ -1794,15 +1799,28 @@ CKEDITOR.STYLE_OBJECT = 3;
 	// is treated as a wildcard which will match any value.
 	// @param {Object/String} source
 	// @param {Object/String} target
+	// @returns {Boolean}
 	function compareCssText( source, target ) {
+		function filter( string, propertyName ) {
+			// In case of font-families we'll skip quotes. (#10750)
+			return propertyName.toLowerCase() == 'font-family' ? string.replace( /["']/g, '' ) : string;
+		}
+
 		if ( typeof source == 'string' )
 			source = CKEDITOR.tools.parseCssText( source );
 		if ( typeof target == 'string' )
 			target = CKEDITOR.tools.parseCssText( target, true );
 
 		for ( var name in source ) {
-			if ( !( name in target && ( target[ name ] == source[ name ] || source[ name ] == 'inherit' || target[ name ] == 'inherit' ) ) )
+			if ( !( name in target ) ) {
 				return false;
+			}
+
+			if ( !( filter( target[ name ], name ) == filter( source[ name ], name ) ||
+				source[ name ] == 'inherit' ||
+				target[ name ] == 'inherit' ) ) {
+				return false;
+			}
 		}
 		return true;
 	}
